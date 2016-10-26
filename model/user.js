@@ -41,7 +41,7 @@ userSchema.methods.generateFindHash = function(){
   return new Promise((resolve, reject) => {
     var tries = 0;
     _generateFindHash.call(this);
-   
+
     function _generateFindHash(){
       this.findHash = crypto.randomBytes(32).toString('hex');
       this.save()
@@ -50,8 +50,8 @@ userSchema.methods.generateFindHash = function(){
         if (tries > 5) reject(err);
         tries++;
         _generateFindHash.call(this);
-      })
-    };
+      });
+    }
   });
 };
 
